@@ -1,3 +1,4 @@
+<img width="1927" height="1087" alt="Screenshot 2026-10-22 010217" src="https://github.com/user-attachments/assets/10ad1361-c46d-4021-8d9b-cb2abc70b149" />
 # WebWise AI — Real-Time Web Summarizer Chrome Extension
 
 > **100% Local · Privacy-First · Real-Time Streaming**  
