@@ -1,0 +1,50 @@
+# WebWise AI — .gitignore
+# ========================
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+ENV/
+
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+.env*
+*.env
+**/.env
+!.env.example
+!**/.env.example
+# Keep .env.example — it's a safe template with no real secrets
+
+# ── IDE / editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Testing / coverage ────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+*.log
+
+# ── Node (if we add build tools later) ───────────────────────────────────────
+node_modules/
+
+# ── Chrome extension build artifacts ─────────────────────────────────────────
+extension/*.crx
+extension/*.pem

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=400, initial-scale=1.0">
+  <title>WebWise AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- ── Header / Branding ──────────────────────────────────────────── -->
+  <header id="header">
+    <div class="brand">
+      <img src="icons/icon48.png" alt="WebWise AI" class="brand-icon">
+      <div class="brand-text">
+        <h1>WebWise AI</h1>
+        <span class="tagline">Local AI · Private · Instant</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <button id="btn-popout" class="btn-icon" title="Open in separate window (stays open while browsing)" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </button>
+      <div id="status-dot" class="status-dot" title="Checking backend..."></div>
+    </div>
+  </header>
+
+  <!-- ── Page Title ─────────────────────────────────────────────────── -->
+  <section id="page-info" class="panel">
+    <label class="panel-label">Current Page</label>
+    <p id="page-title" class="page-title">Loading...</p>
+  </section>
+
+  <!-- ── AI Provider Selector ────────────────────────────────────────── -->
+  <section class="panel">
+    <div class="panel-header-row">
+      <label class="panel-label" for="provider-select">AI Provider</label>
+      <span id="provider-badge" class="badge">Local</span>
+    </div>
+    <select id="provider-select" class="custom-select">
+      <option value="ollama" selected>🖥️ Local Ollama (qwen3:1.7b)</option>
+      <option value="groq">⚡ Groq Cloud</option>
+    </select>
+  </section>
+
+  <!-- ── Task Selector ──────────────────────────────────────────────── -->
+  <section class="panel">
+    <label class="panel-label" for="task-select">Analysis Mode</label>
+    <select id="task-select" class="custom-select">
+      <option value="summarize" selected>📝 Summarize</option>
+      <option value="key_points">🎯 Key Points</option>
+      <option value="explain_simply">💡 Explain Simply</option>
+      <option value="generate_questions">❓ Generate Questions</option>
+    </select>
+  </section>
+
+  <!-- ── Action Buttons ─────────────────────────────────────────────── -->
+  <section class="actions">
+    <button id="btn-summarize" class="btn btn-primary" type="button" disabled>
+      <span class="btn-text">Summarize</span>
+      <span class="btn-loading" hidden>
+        <span class="spinner"></span> Analyzing...
+      </span>
+    </button>
+    <button id="btn-cancel" class="btn btn-secondary" type="button" hidden>Cancel</button>
+  </section>
+
+  <!-- ── Output Panel ───────────────────────────────────────────────── -->
+  <section id="output-section" class="panel output-panel" hidden>
+    <div class="output-header">
+      <label class="panel-label">Result</label>
+      <div class="output-actions">
+        <button id="btn-copy" class="btn-icon" title="Copy to clipboard" type="button">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <button id="btn-pdf" class="btn-icon" title="Download PDF" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="12" y1="18" x2="12" y2="12"></line>
+            <polyline points="9 15 12 18 15 15"></polyline>
+          </svg>
+        </button>
+        <button id="btn-clear" class="btn-icon" title="Clear result" type="button">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="output-text" class="output-text"></div>
+  </section>
+
+  <!-- ── Error Banner ───────────────────────────────────────────────── -->
+  <section id="error-banner" class="error-banner" hidden>
+    <span id="error-message"></span>
+  </section>
+
+  <!-- ── Copy Toast ─────────────────────────────────────────────────── -->
+  <div id="copy-toast" class="copy-toast" hidden>Copied!</div>
+
+  <!-- Locally bundled jsPDF for 100% offline, CSP-compliant PDF generation -->
+  <script src="libs/jspdf.umd.min.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
