@@ -9,7 +9,8 @@
 
 ```
 ┌────────────────────────────────┐
-│      Active Chrome Tab         │
+│      Active Chrome Tab         │<img width="1927" height="1087" alt="Screenshot 2026-10-22 010217" src="https://github.com/user-attachments/assets/154ade86-d711-4d00-b05c-6036307c3963" />
+
 └───────────────┬────────────────┘
                 │ chrome.scripting.executeScript
                 ▼
